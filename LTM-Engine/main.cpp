@@ -11,11 +11,12 @@
 
 static void help()
 {
-    cout << "\n Program description.\n\n"
+    cout << "\n This engine is part of the LTM microexpressions analysis project.\n With the engine you can annotate a video with the related micro-exressions (from the video .txt file). It with result in a new video in output with details about the micro expression\n\n"
     "Usage:\n"
     "./LTM-Engine [--inputname=<input video filename> this is the video you want to analyse]\n"
-    "   [--outputname=<output video filename> this is the p of the video you want to write]\n"
+    "   [--outputname=<output video filename> this is the path of the video you want to write]\n"
     "During execution:\n\tHit any key to quit.\n"
+    "\n"
     "\tUsing OpenCV version " << CV_VERSION << "\n" << endl;
 }
 
