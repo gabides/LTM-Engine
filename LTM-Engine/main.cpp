@@ -20,7 +20,6 @@ static void help()
     "\tUsing OpenCV version " << CV_VERSION << "\n" << endl;
 }
 
-
 string cascadeName;
 
 
@@ -40,6 +39,9 @@ void drawScreen2( Mat& img){imshow( "result", img );}
 
 
 int main(int argc, const char * argv[]) {
+    void    ofSetDataPathRoot( string root );
+
+    
    
     CascadeClassifier cascade;  // for face detection, will only use cascade
     cascadeName = "Detector/haarcascade_frontalface_alt2.xml";
@@ -54,7 +56,7 @@ int main(int argc, const char * argv[]) {
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
-                                 "{inputname|EP12_2_1.avi|}"
+                                 "{inputname|EP07_10.avi|}"
                                  "{outputname||}");
 
     if (parser.has("help"))
@@ -103,7 +105,10 @@ int main(int argc, const char * argv[]) {
     
     
     //manage the textfile
-    string txtpath;
+    string txtpath;// = "../timestamps/";
+    //string inputName2 = inputName;
+    //inputName2.erase(0,6);
+    
     txtpath.append(inputName);
     txtpath.pop_back();
     txtpath.pop_back();

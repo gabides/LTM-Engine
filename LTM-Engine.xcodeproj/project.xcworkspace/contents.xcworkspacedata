@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:LTM-Engine.xcodeproj">
+      location = "group:libopencv_ximgproc.3.4.1.dylib">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

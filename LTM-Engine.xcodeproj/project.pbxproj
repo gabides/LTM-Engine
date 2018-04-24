@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		70069757208636D900E549D8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 70069756208636D900E549D8 /* main.cpp */; };
+		702E8FA02086D7B3006D8171 /* txtToVector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 702E8F9F2086D7B3006D8171 /* txtToVector.cpp */; };
+		702E8FA22086D7F6006D8171 /* detectAndDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 702E8FA12086D7F6006D8171 /* detectAndDraw.cpp */; };
+		709901002086D63600880E3E /* drawScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 709900FE2086D63600880E3E /* drawScreen.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		70069751208636D900E549D8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 16;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
@@ -25,10 +28,22 @@
 /* Begin PBXFileReference section */
 		70069753208636D900E549D8 /* LTM-Engine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "LTM-Engine"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70069756208636D900E549D8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		702E8F9E2086D719006D8171 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		702E8F9F2086D7B3006D8171 /* txtToVector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = txtToVector.cpp; sourceTree = "<group>"; };
+		702E8FA12086D7F6006D8171 /* detectAndDraw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = detectAndDraw.cpp; sourceTree = "<group>"; };
+		703C1661208E8F5100EC86C6 /* libopencv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libopencv.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		709900FE2086D63600880E3E /* drawScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = drawScreen.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		70069750208636D900E549D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		703C165E208E8F5100EC86C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				70069753208636D900E549D8 /* LTM-Engine */,
+				703C1661208E8F5100EC86C6 /* libopencv.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,11 +74,25 @@
 			isa = PBXGroup;
 			children = (
 				70069756208636D900E549D8 /* main.cpp */,
+				702E8FA12086D7F6006D8171 /* detectAndDraw.cpp */,
+				702E8F9F2086D7B3006D8171 /* txtToVector.cpp */,
+				709900FE2086D63600880E3E /* drawScreen.cpp */,
+				702E8F9E2086D719006D8171 /* Header.h */,
 			);
 			path = "LTM-Engine";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		703C165F208E8F5100EC86C6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		70069752208636D900E549D8 /* LTM-Engine */ = {
@@ -82,6 +112,23 @@
 			productReference = 70069753208636D900E549D8 /* LTM-Engine */;
 			productType = "com.apple.product-type.tool";
 		};
+		703C1660208E8F5100EC86C6 /* opencv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 703C1662208E8F5100EC86C6 /* Build configuration list for PBXNativeTarget "opencv" */;
+			buildPhases = (
+				703C165D208E8F5100EC86C6 /* Sources */,
+				703C165E208E8F5100EC86C6 /* Frameworks */,
+				703C165F208E8F5100EC86C6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = opencv;
+			productName = opencv;
+			productReference = 703C1661208E8F5100EC86C6 /* libopencv.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,6 +139,9 @@
 				ORGANIZATIONNAME = "Gabriel Dittrick";
 				TargetAttributes = {
 					70069752208636D900E549D8 = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					703C1660208E8F5100EC86C6 = {
 						CreatedOnToolsVersion = 9.3;
 					};
 				};
@@ -109,6 +159,7 @@
 			projectRoot = "";
 			targets = (
 				70069752208636D900E549D8 /* LTM-Engine */,
+				703C1660208E8F5100EC86C6 /* opencv */,
 			);
 		};
 /* End PBXProject section */
@@ -118,7 +169,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				702E8FA22086D7F6006D8171 /* detectAndDraw.cpp in Sources */,
+				702E8FA02086D7B3006D8171 /* txtToVector.cpp in Sources */,
 				70069757208636D900E549D8 /* main.cpp in Sources */,
+				709901002086D63600880E3E /* drawScreen.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		703C165D208E8F5100EC86C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +190,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLY_RULES_IN_COPY_FILES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -160,6 +222,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -176,9 +239,148 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_aruco.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_aruco.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_aruco.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bgsegm.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bgsegm.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bgsegm.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bioinspired.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bioinspired.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bioinspired.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_calib3d.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_calib3d.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_calib3d.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ccalib.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ccalib.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ccalib.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_core.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_core.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_core.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_datasets.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_datasets.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_datasets.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn_objdetect.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn_objdetect.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn_objdetect.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dpm.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dpm.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dpm.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_face.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_face.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_face.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_features2d.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_features2d.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_features2d.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_flann.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_flann.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_flann.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_fuzzy.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_fuzzy.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_fuzzy.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_hfs.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_hfs.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_hfs.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_highgui.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_highgui.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_highgui.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_img_hash.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_img_hash.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_img_hash.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgcodecs.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgcodecs.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgcodecs.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgproc.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgproc.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgproc.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_line_descriptor.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_line_descriptor.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_line_descriptor.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ml.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ml.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ml.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_objdetect.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_objdetect.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_objdetect.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_optflow.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_optflow.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_optflow.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_phase_unwrapping.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_phase_unwrapping.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_phase_unwrapping.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_photo.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_photo.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_photo.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_plot.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_plot.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_plot.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_reg.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_reg.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_reg.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_rgbd.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_rgbd.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_rgbd.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_saliency.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_saliency.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_saliency.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape copy.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stereo.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stereo.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stereo.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stitching.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stitching.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stitching.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_structured_light.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_structured_light.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_structured_light.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_superres.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_superres.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_superres.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_surface_matching.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_surface_matching.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_surface_matching.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_text.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_text.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_text.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_tracking.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_tracking.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_tracking.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_video.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_video.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_video.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videoio.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videoio.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videoio.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videostab.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videostab.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videostab.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xfeatures2d.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xfeatures2d.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xfeatures2d.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ximgproc.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ximgproc.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ximgproc.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xobjdetect.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xobjdetect.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xobjdetect.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xphoto.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xphoto.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xphoto.dylib\"",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -187,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLY_RULES_IN_COPY_FILES = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -218,6 +421,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -228,8 +432,147 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = NO;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_aruco.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_aruco.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_aruco.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bgsegm.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bgsegm.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bgsegm.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bioinspired.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bioinspired.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_bioinspired.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_calib3d.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_calib3d.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_calib3d.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ccalib.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ccalib.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ccalib.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_core.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_core.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_core.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_datasets.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_datasets.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_datasets.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn_objdetect.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn_objdetect.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn_objdetect.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dnn.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dpm.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dpm.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_dpm.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_face.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_face.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_face.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_features2d.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_features2d.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_features2d.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_flann.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_flann.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_flann.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_fuzzy.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_fuzzy.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_fuzzy.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_hfs.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_hfs.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_hfs.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_highgui.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_highgui.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_highgui.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_img_hash.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_img_hash.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_img_hash.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgcodecs.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgcodecs.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgcodecs.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgproc.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgproc.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_imgproc.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_line_descriptor.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_line_descriptor.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_line_descriptor.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ml.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ml.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ml.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_objdetect.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_objdetect.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_objdetect.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_optflow.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_optflow.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_optflow.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_phase_unwrapping.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_phase_unwrapping.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_phase_unwrapping.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_photo.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_photo.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_photo.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_plot.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_plot.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_plot.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_reg.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_reg.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_reg.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_rgbd.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_rgbd.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_rgbd.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_saliency.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_saliency.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_saliency.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape copy.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_shape.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stereo.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stereo.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stereo.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stitching.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stitching.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_stitching.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_structured_light.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_structured_light.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_structured_light.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_superres.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_superres.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_superres.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_surface_matching.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_surface_matching.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_surface_matching.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_text.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_text.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_text.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_tracking.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_tracking.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_tracking.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_video.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_video.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_video.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videoio.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videoio.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videoio.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videostab.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videostab.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_videostab.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xfeatures2d.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xfeatures2d.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xfeatures2d.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ximgproc.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ximgproc.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_ximgproc.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xobjdetect.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xobjdetect.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xobjdetect.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xphoto.3.4.1.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xphoto.3.4.dylib\"",
+					"\"$(SRCROOT)/LTM-Engine/library/libopencv_xphoto.dylib\"",
+				);
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -238,6 +581,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,7 +593,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		703C1663208E8F5100EC86C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		703C1664208E8F5100EC86C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -267,6 +638,15 @@
 			buildConfigurations = (
 				7006975B208636D900E549D8 /* Debug */,
 				7006975C208636D900E549D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		703C1662208E8F5100EC86C6 /* Build configuration list for PBXNativeTarget "opencv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				703C1663208E8F5100EC86C6 /* Debug */,
+				703C1664208E8F5100EC86C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
