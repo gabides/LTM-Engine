@@ -8,7 +8,7 @@
 
 #include "Header.h"
 
-void drawScreen( Mat& img, string AU, Point tl, Point br, string emotion)
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion)
 {
     vector<string> actionUnits;
     
@@ -55,129 +55,130 @@ void drawScreen( Mat& img, string AU, Point tl, Point br, string emotion)
     
     //milieux //rajouter toutes les AU !
     
-    
-    if (AU == "4") //front entre sourcils // brow lowerer
+    switch(AU)
     {
+    //if (AU == 4) //front entre sourcils // brow lowerer
+        case 4:
         center.x = xmid;
         center.y = ymid - dy/4.;
-    }
-    else if (AU == "8" or AU == "22" or AU == "23" or AU == "24" or AU == "25" or AU == "28")// mouth (AV)
-        //8: lips toword each other / 22: lip funneler / 23: lip tightener / 24: lip pressor / 25: lips part(??) / 28 lip suck
-    {
-        center.x = xmid;
-        center.y = ymid +1*dy/3.;
-    }
+        break;
+            
+        case(8):   //8: lips toword each other      // mouth (AV)
+
+        case(22): // 22: lip funneler
+        case(23): // 23: lip tightener
+        case(24): // 24: lip pressor
+        case(25): // 25: lips part(??)
+        case(28): // 28 lip suck
+            center.x = xmid;
+            center.y = ymid +1*dy/3.;
+            break;
+            
     
-    else if (AU == "9") //nose wrinckler (AV)
-    {
-        center.x = xmid;
-        center.y = ymid +1*dy/4.;
-    }
-    else if (AU == "10") //upper lip raiser (AV)
-    {
-        center.x = xmid;
-        center.y = ymid +1*dy/4.;
-    }
-    else if (AU == "17") //chin raiser ok
-    {
-        center.x = xmid;
-        center.y = ymid +1.2*dy/2.;
-    }
+        case(9): //nose wrinckler (AV)
+            center.x = xmid;
+            center.y = ymid +1*dy/4.;
+            break;
+            
+        case(10): //upper lip raiser (AV)
+            center.x = xmid;
+            center.y = ymid +1*dy/4.;
+            break;
+            
+        case(17): //chin raiser ok
+            center.x = xmid;
+            center.y = ymid +1.2*dy/2.;
+            break;
     
-    else if (AU == "21") //neck tightener (AV)
-    {
-        center.x = xmid;
-        center.y = ymid +3*dy/4.;
-    }
+        case(21): //neck tightener (AV)
+            center.x = xmid;
+            center.y = ymid +3*dy/4.;
+            break;
     
-    else if (AU == "26") // jaw drop (AV)
-    {
-        center.x = xmid;
-        center.y = ymid + dy/2.;
-    }
-    else if (AU == "27") // mouth stretch (AV)
-    {
-        center.x = xmid;
-        center.y = ymid + dy/3.;
-    }
+        case(26): // jaw drop (AV)
+            center.x = xmid;
+            center.y = ymid + dy/2.;
+            break;
+            
+        case(27): // mouth stretch (AV)
+            center.x = xmid;
+            center.y = ymid + dy/3.;
+            break;
     
     //19 = tongue show ??
     
     //symétriques
-    else if (AU == "1")  //inner brow  à verifier (AV)
-    {
-        center.x = xmid - dy/4.;
-        center.y = ymid - dy/4.;
-    }
-    else if (AU == "2")  //outer brow (AV)
-    {
-        center.x = xmid - dy/3.;
-        center.y = ymid - dy/4.;
-    }
+        case(1):  //inner brow  à verifier (AV)
+            center.x = xmid - dy/4.;
+            center.y = ymid - dy/4.;
+            break;
+            
+        case(2):  //outer brow (AV)
+            center.x = xmid - dy/3.;
+            center.y = ymid - dy/4.;
+            break;
     
-    else if (AU == "5")  //upper lid (AV)
-    {
-        center.x = xmid - dy/4.;
-        center.y = ymid - dy/4.5;
-    }
-    else if (AU == "6")  //cheek raiser (AV) // under the eye
-    {
-        center.x = xmid - dy/4.;
-        center.y = ymid - dy/3.;
-    }
-    else if (AU == "7")  //lids tightener (AV) // under the eye
-    {
-        center.x = xmid - dy/4.;
-        center.y = ymid - dy/3.;
-    }
-    else if (AU == "11")  //Nasolabial deepener (AV?)
-    {
-        center.x = xmid - dy/4.;
-        center.y = ymid + dy/4.;
-    }
-    
-    else if (AU == "12") //pomettes // lip corner puller ok (ArV?)
-    {
-        center.x = xmid - 1.2*dy/4.;
-        center.y = ymid + dy/4.;
-    }
-    else if (AU == "13") //sharp lip  puller  (AV)
-    {
-        center.x = xmid - 0.8*dy/4.;
-        center.y = ymid + dy/4.;
-    }
-    else if (AU == "14") //Dimpler/buccinator  (AV)
-    {
-        center.x = xmid - 0.8*dy/4.;
-        center.y = ymid + dy/3.;
-    }
-    else if (AU == "15") //lip corner depressor  (AV)
-    {
-        center.x = xmid - dy/8.;
-        center.y = ymid + dy/3.;
-    }
-    else if (AU == "16") //lower lip depressor  (AV)
-    {
-        center.x = xmid - dy/10.;
-        center.y = ymid + dy/3.;
-    }
-    else if (AU == "18") //lip pucker (AV)
-    {
-        center.x = xmid - 0.6*dy/4.;
-        center.y = ymid + dy/3.;
-    }
-    else if (AU == "20") // lip stretcher (AV)
-    {
-        center.x = xmid - 1.4*dy/4.;
-        center.y = ymid + dy/4.; // dy/3 ?
-    }
+        case(5)://upper lid (AV)
+            center.x = xmid - dy/4.;
+            center.y = ymid - dy/4.5;
+            break;
+            
+        case(6):  //cheek raiser (AV) // under the eye
+            center.x = xmid - dy/4.;
+            center.y = ymid - dy/3.;
+            break;
+            
+        case(7):  //lids tightener (AV) // under the eye
+            center.x = xmid - dy/4.;
+            center.y = ymid - dy/3.;
+            break;
+            
+        case(11): //Nasolabial deepener (AV?)
+            center.x = xmid - dy/4.;
+            center.y = ymid + dy/4.;
+            break;
     
 
-    else // ?
-    {
-        center.x = xmid;
-        center.y = ymid;
-        radius = 0;
+        case(12)://pomettes // lip corner puller ok (ArV?)
+            center.x = xmid - 1.2*dy/4.;
+            center.y = ymid + dy/4.;
+            break;
+        
+        case(13): //sharp lip  puller  (AV)
+            center.x = xmid - 0.8*dy/4.;
+            center.y = ymid + dy/4.;
+            break;
+            
+       case(14): //Dimpler/buccinator  (AV)
+            center.x = xmid - 0.8*dy/4.;
+            center.y = ymid + dy/3.;
+            break;
+            
+        case(15): //lip corner depressor  (AV)
+            center.x = xmid - dy/8.;
+            center.y = ymid + dy/3.;
+            break;
+            
+        case(16): //lower lip depressor  (AV)
+            center.x = xmid - dy/10.;
+            center.y = ymid + dy/3.;
+            break;
+    
+        case(18)://lip pucker (AV)
+            center.x = xmid - 0.6*dy/4.;
+            center.y = ymid + dy/3.;
+            break;
+    
+       case(20): // lip stretcher (AV)
+            center.x = xmid - 1.4*dy/4.;
+            center.y = ymid + dy/4.; // dy/3 ?
+            break;
+    
+
+        default:
+            center.x = xmid;
+            center.y = ymid;
+            radius = 0;
     }
     
     Point center2 = Point(2*xmid-center.x,center.y);

@@ -26,7 +26,7 @@ string cascadeName;
 vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade);
 
 
-void drawScreen( Mat& img, string AU, Point tl, Point br, string emotion);
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion);
 
 
 vector<vector<string>> txtToVector(string txtpath);
@@ -120,19 +120,21 @@ int main(int argc, const char * argv[]) {
     int onset;
     int offset;
     string emotion;
-    string AU;
+    int AU;
     int dimension;
     
     std::vector<std::vector<string>> vect(dimension, std::vector<string>(4));
 
 
     vect = txtToVector(txtpath);
-    //values.push_back(atoi(single_value.c_str()));
 
     onset = atoi(vect[0][0].c_str());
-    offset = atoi(vect[0][1].c_str());
+    
+    if(vect[0][1]=="/") {offset = onset+25;}
+    else {offset = atoi(vect[0][1].c_str());}
+    
     emotion = vect[0][2];
-    AU = vect[0][3];
+    AU = atoi(vect[0][3].c_str());
     cout << onset << " " << offset << " " << emotion << " " << AU << endl;
     
     
