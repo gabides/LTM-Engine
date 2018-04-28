@@ -8,7 +8,7 @@
 
 #include "Header.h"
 
-void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion)
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, bool display)
 {
     vector<string> actionUnits;
     
@@ -189,5 +189,5 @@ void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion)
     Point textpoint = Point(center.x+radius+4, center.y);
     putText(img, emotion, textpoint,
            FONT_HERSHEY_COMPLEX_SMALL, 0.8, cvScalar(200,200,250), 1, CV_AA);
-    imshow( "result", img );
+    if (display == true){imshow( "result", img );}
 }

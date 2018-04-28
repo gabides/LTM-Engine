@@ -8,7 +8,7 @@
 
 #include "Header.h"
 
-vector<cv::Point> detectAndDraw( Mat& img, CascadeClassifier& cascade)
+vector<cv::Point> detectAndDraw( Mat& img, CascadeClassifier& cascade, bool display)
 {
     double scale = 1; //added
     double fx = 1 / scale;
@@ -54,7 +54,7 @@ vector<cv::Point> detectAndDraw( Mat& img, CascadeClassifier& cascade)
     rectangle(img, topleft, bottomright,color, 3, 8, 0); // comment this line to erase the rectangle
     
 
-    imshow( "result", img );
+    if (display == true){imshow( "result", img);};
     vector<Point> v;
     v.push_back(topleft);
     v.push_back(bottomright);

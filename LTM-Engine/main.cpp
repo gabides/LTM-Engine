@@ -23,10 +23,10 @@ static void help()
 string cascadeName;
 
 
-vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade);
+vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade, bool display);
 
 
-void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion);
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, bool display);
 
 
 vector<vector<string>> txtToVector(string txtpath);
@@ -52,12 +52,13 @@ int main(int argc, const char * argv[]) {
     string inputName;
     string outputName;
     double fps;
-    
+    bool display;
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
                                  "{inputname|EP07_10.avi|}"
-                                 "{outputname||}");
+                                 "{outputname||}"
+                                 "{livedisplay|true|}");
 
     if (parser.has("help"))
     {
@@ -65,9 +66,10 @@ int main(int argc, const char * argv[]) {
         return 0;
     }
     
-
+    
     inputName = parser.get<string>("inputname");
     outputName = parser.get<string>("outputname");
+    display = parser.get<bool>("livedisplay");
     
     cout << "input name : " << inputName << endl << "given output name : " + outputName << endl;
 
@@ -153,14 +155,14 @@ int main(int argc, const char * argv[]) {
         
         Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
         
-        points = detectAndDraw(frame1, cascade);
+        points = detectAndDraw(frame1, cascade, display);
         
         topleft = points[0];
         bottomright = points[1];
         
         
         if (i>onset && i< offset)
-            drawScreen(frame1, AU, topleft, bottomright, emotion);
+            drawScreen(frame1, AU, topleft, bottomright, emotion, display);
     
         video.write(frame1);        // Write the frame into the file "outputName"
 
