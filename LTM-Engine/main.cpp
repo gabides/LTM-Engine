@@ -26,7 +26,7 @@ string cascadeName;
 vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade, bool display);
 
 
-void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, bool display);
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, int nColor, bool display);
 
 
 vector<vector<string>> txtToVector(string txtpath);
@@ -55,12 +55,14 @@ int main(int argc, const char * argv[]) {
     string outputName;
     double fps;
     bool display;
+    int nColor;
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
                                  "{inputname|EP01_12.avi|}"
                                  "{outputname||}"
-                                 "{livedisplay|true|}");
+                                 "{livedisplay|false|}"
+                                 "{color|5|}");
 
     if (parser.has("help"))
     {
@@ -72,6 +74,7 @@ int main(int argc, const char * argv[]) {
     inputName = parser.get<string>("inputname");
     outputName = parser.get<string>("outputname");
     display = parser.get<bool>("livedisplay");
+    nColor= parser.get<int>("color");
     
     cout << "input name : " << inputName << endl << "given output name : " + outputName << endl;
 
@@ -167,7 +170,7 @@ int main(int argc, const char * argv[]) {
         
         for (int k = 0; k< countME; k++){
             if (i>onset[k] && i< offset[k])
-                drawScreen(frame, AU[k], topleft, bottomright, emotion[k], display);
+                drawScreen(frame, AU[k], topleft, bottomright, emotion[k], nColor, display);
         }
     
         video.write(frame);        // Write the frame into the file "outputName"

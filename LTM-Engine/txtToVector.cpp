@@ -34,7 +34,7 @@ vector<vector<string>> txtToVector(string txtpath)
         all_data.push_back(values);
         
     }
-    int n = all_data.size();
+    //int n = all_data.size();
     
     /*for (int i=0; i<n; i++){
      for (int j = 0; j < 4 ; j++){

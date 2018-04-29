@@ -8,7 +8,7 @@
 
 #include "Header.h"
 
-void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, bool display)
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, int nColor, bool display)
 {
     vector<string> actionUnits;
     
@@ -47,7 +47,7 @@ void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, bool disp
         Scalar(255,0,255)
     };
     
-    Scalar color = colors[3];
+    Scalar color = colors[nColor%8];
     radius = dy/4;
 
     //AU = 0 neutral face
