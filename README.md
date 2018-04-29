@@ -7,12 +7,13 @@ C++ application for micro-expressions detection and recognition with graphical i
 
 The interface is being implemented for OSX with Swift language in another project, and the detection/recognition runs in an independent app.
 
-Year-long project with Louis Lenief at CentraleSupélec (2018) and the Facial Analysis Synthesis and Tracking (FAST) research team.
-
 
 Usage:
-./LTM-Engine [--inputname=<input video filename> this is the video you want to analyse]
-   [--outputname=<output video filename> this is the path of the video you want to write]
+./LTM-Engine 
+[--inputname=<input video filename> this is the video you want to analyse] = mandatory
+[--outputname=<output video filename> this is the path of the video you want to write] = optional (if not chosen the video will be writen to "OUT"+inputname
+[--color=<integer between 0 and 7> to choose the color in which to show the ME] = optional
+[--livedisplay=<true or false> to choose wether to show the video while its being processed]
 During execution:
 	Hit any key to quit.
 
@@ -20,3 +21,7 @@ This app was developped using OpenCV version 3.4.1
 
 
 ME = micro-expression
+
+
+Year-long project with Louis Lenief at CentraleSupélec (2018) and the Facial Analysis Synthesis and Tracking (FAST) research team.
+
