@@ -23,10 +23,10 @@ static void help()
 string cascadeName;
 
 
-vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade, bool display);
+vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade);
 
 
-void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, int nColor, bool display);
+void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, int nColor);
 
 
 vector<vector<string>> txtToVector(string txtpath);
@@ -154,6 +154,7 @@ int main(int argc, const char * argv[]) {
     vector<cv :: Point> points;
 
     cout << "Video capturing has been started ..." << endl;
+    int refreshFaceDetectFrequency = 25;
     
     for(int i = 0; i < len ;i++)
     {
@@ -163,16 +164,17 @@ int main(int argc, const char * argv[]) {
     
         //Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
         
-        points = detectAndDraw(frame, cascade, display);
+        if (i%refreshFaceDetectFrequency == 0){points = detectAndDraw(frame, cascade);}
         
         topleft = points[0];
         bottomright = points[1];
         
         for (int k = 0; k< countME; k++){
             if (i>onset[k] && i< offset[k])
-                drawScreen(frame, AU[k], topleft, bottomright, emotion[k], nColor, display);
+                drawScreen(frame, AU[k], topleft, bottomright, emotion[k], nColor);
         }
     
+        if (display == true){imshow( "result", frame );}
         video.write(frame);        // Write the frame into the file "outputName"
 
         char c = (char)waitKey(50); //why 10 ?
