@@ -31,7 +31,7 @@
 		702E8F9E2086D719006D8171 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		702E8F9F2086D7B3006D8171 /* txtToVector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = txtToVector.cpp; sourceTree = "<group>"; };
 		702E8FA12086D7F6006D8171 /* detectAndDraw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = detectAndDraw.cpp; sourceTree = "<group>"; };
-		703C1661208E8F5100EC86C6 /* libopencv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libopencv.a; sourceTree = BUILT_PRODUCTS_DIR; };
+
 		709900FE2086D63600880E3E /* drawScreen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = drawScreen.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				70069753208636D900E549D8 /* LTM-Engine */,
-				703C1661208E8F5100EC86C6 /* libopencv.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,23 +111,8 @@
 			productReference = 70069753208636D900E549D8 /* LTM-Engine */;
 			productType = "com.apple.product-type.tool";
 		};
-		703C1660208E8F5100EC86C6 /* opencv */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 703C1662208E8F5100EC86C6 /* Build configuration list for PBXNativeTarget "opencv" */;
-			buildPhases = (
-				703C165D208E8F5100EC86C6 /* Sources */,
-				703C165E208E8F5100EC86C6 /* Frameworks */,
-				703C165F208E8F5100EC86C6 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = opencv;
-			productName = opencv;
-			productReference = 703C1661208E8F5100EC86C6 /* libopencv.a */;
-			productType = "com.apple.product-type.library.static";
-		};
+		
+		
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
