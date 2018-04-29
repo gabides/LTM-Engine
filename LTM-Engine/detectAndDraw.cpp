@@ -51,7 +51,7 @@ vector<cv::Point> detectAndDraw( Mat& img, CascadeClassifier& cascade, bool disp
     Point bottomright = r.br();
 
     
-    rectangle(img, topleft, bottomright,color, 3, 8, 0); // comment this line to erase the rectangle
+    //rectangle(img, topleft, bottomright,color, 3, 8, 0); // comment this line to erase the rectangle
     
 
     if (display == true){imshow( "result", img);};

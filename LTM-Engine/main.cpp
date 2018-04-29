@@ -58,7 +58,7 @@ int main(int argc, const char * argv[]) {
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
-                                 "{inputname|EP07_10.avi|}"
+                                 "{inputname|EP01_12.avi|}"
                                  "{outputname||}"
                                  "{livedisplay|true|}");
 
@@ -121,28 +121,30 @@ int main(int argc, const char * argv[]) {
     txtpath.append(".txt");
 
     cout << "txtpath = " << txtpath << endl;
-    int onset;
-    int offset;
-    string emotion;
-    int AU;
-    int dimension;
+    int countME;
+    int onset[countME];
+    int offset[countME];
+    string emotion[countME];
+    int AU[countME];
     
-    std::vector<std::vector<string>> vect(dimension, std::vector<string>(4));
-
+    std::vector<std::vector<string>> vect(countME, std::vector<string>(4));
+    
 
     vect = txtToVector(txtpath);
-
-    onset = atoi(vect[0][0].c_str());
+    countME = (int)vect.size();
     
-    if(vect[0][1]=="/") {offset = onset+25;}
-    else {offset = atoi(vect[0][1].c_str());}
+    for(int k = 0; k < countME; k++){
+        onset[k] = atoi(vect[k][0].c_str());
+        if(vect[k][1]=="/") {offset[k] = onset[k]+25;}
+        else {offset[k] = atoi(vect[k][1].c_str());}
+        emotion[k] = vect[k][2];
+        AU[k] = atoi(vect[k][3].c_str());
+    }
     
-    emotion = vect[0][2];
-    AU = atoi(vect[0][3].c_str());
-    cout << onset << " " << offset << " " << emotion << " " << AU << endl;
     
-    int n = vect.size();
-    cout << n << endl;
+    //cout << onset << " " << offset << " " << emotion << " " << AU << endl;
+    
+    cout << "number of microexpressions in the video : " << vect.size() << endl;
     
     Point topleft;
     Point bottomright;
@@ -156,20 +158,21 @@ int main(int argc, const char * argv[]) {
         if( frame.empty() )
             break;
     
-        Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
+        //Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
         
-        points = detectAndDraw(frame1, cascade, display);
+        points = detectAndDraw(frame, cascade, display);
         
         topleft = points[0];
         bottomright = points[1];
         
-        
-        if (i>onset && i< offset)
-            drawScreen(frame1, AU, topleft, bottomright, emotion, display);
+        for (int k = 0; k< countME; k++){
+            if (i>onset[k] && i< offset[k])
+                drawScreen(frame, AU[k], topleft, bottomright, emotion[k], display);
+        }
     
-        video.write(frame1);        // Write the frame into the file "outputName"
+        video.write(frame);        // Write the frame into the file "outputName"
 
-        char c = (char)waitKey(10); //why 10 ?
+        char c = (char)waitKey(50); //why 10 ?
         
         if( c == 27 || c == 'q' || c == 'Q' ) // ?
             break;
@@ -177,7 +180,7 @@ int main(int argc, const char * argv[]) {
     capture.release();
     video.release();
     t = (double)getTickCount() - t;
-    printf( "detection time = %g ms\n", t*1000/getTickFrequency());
+    printf( "detection time = %g s\n", t/getTickFrequency());
     
     // Closes all the windows
     destroyAllWindows();

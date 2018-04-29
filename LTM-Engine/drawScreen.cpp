@@ -57,12 +57,12 @@ void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, bool disp
     
     switch(AU)
     {
-    //if (AU == 4) //front entre sourcils // brow lowerer
-        case 4:
+    //if (AU == 4)
+        case 4: //front entre sourcils // brow lowerer
         center.x = xmid;
         center.y = ymid - dy/4.;
         break;
-            
+
         case(8):   //8: lips toword each other      // mouth (AV)
 
         case(22): // 22: lip funneler
