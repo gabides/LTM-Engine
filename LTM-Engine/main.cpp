@@ -35,14 +35,16 @@ vector<vector<string>> txtToVector(string txtpath);
 void drawScreen2( Mat& img){imshow( "result", img );}
 
 
-
+    
 
 
 int main(int argc, const char * argv[]) {
     void    ofSetDataPathRoot( string root );
 
     
-   
+    double t = 0;
+    t = (double)getTickCount();
+
     CascadeClassifier cascade;  // for face detection, will only use cascade
     cascadeName = "Detector/haarcascade_frontalface_alt2.xml";
     cascade.load( cascadeName );
@@ -139,7 +141,8 @@ int main(int argc, const char * argv[]) {
     AU = atoi(vect[0][3].c_str());
     cout << onset << " " << offset << " " << emotion << " " << AU << endl;
     
-    
+    int n = vect.size();
+    cout << n << endl;
     
     Point topleft;
     Point bottomright;
@@ -152,7 +155,7 @@ int main(int argc, const char * argv[]) {
         capture >> frame;
         if( frame.empty() )
             break;
-        
+    
         Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
         
         points = detectAndDraw(frame1, cascade, display);
@@ -173,6 +176,8 @@ int main(int argc, const char * argv[]) {
     }
     capture.release();
     video.release();
+    t = (double)getTickCount() - t;
+    printf( "detection time = %g ms\n", t*1000/getTickFrequency());
     
     // Closes all the windows
     destroyAllWindows();
