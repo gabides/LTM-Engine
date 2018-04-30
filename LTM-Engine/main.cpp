@@ -43,7 +43,6 @@ void drawScreen2( Mat& img){imshow( "result", img );}
 int main(int argc, const char * argv[]) {
     void    ofSetDataPathRoot( string root );
 
-    
     double t = 0;
     t = (double)getTickCount();
 
@@ -61,9 +60,9 @@ int main(int argc, const char * argv[]) {
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
-                                 "{inputname|EP01_12.avi|}"
+                                 "{inputname|CASMEB/EP02_2.avi|}"
                                  "{outputname||}"
-                                 "{livedisplay|false|}"
+                                 "{livedisplay|true|}"
                                  "{color|5|}");
 
     if (parser.has("help"))
@@ -83,7 +82,7 @@ int main(int argc, const char * argv[]) {
 
     if (outputName == "")
     {
-        outputName = "OUT"+inputName;
+        outputName = "OUTPUT/"+inputName;
     }
     
     cout << "output name : " + outputName << endl;
@@ -127,25 +126,53 @@ int main(int argc, const char * argv[]) {
 
     cout << "txtpath = " << txtpath << endl;
     int countME;
-    int onset[countME];
+    int onset[countME];  //those tables are useless, don't work for onset offset // else ? AU and emotiion ?
     int offset[countME];
     string emotion[countME];
-    int AU[countME];
+    int AU[countME+1];
+
+    
+    string AUstring;
     
     std::vector<std::vector<string>> vect(countME, std::vector<string>(4));
     
 
     vect = txtToVector(txtpath);
     countME = (int)vect.size();
-    
+    cout << "countME = " << countME << endl;
     for(int k = 0; k < countME; k++){
         onset[k] = atoi(vect[k][0].c_str());
-        if(vect[k][1]=="/") {offset[k] = onset[k]+25;}
-        else {offset[k] = atoi(vect[k][1].c_str());}
+        
+        /*if(vect[k][1]=="/" or vect[k][1]=="\\"){offset[k] = onset[k]+25.;}
+        else {offset[k] = atoi(vect[k][1].c_str());}*/
+        
+        
+        if(vect[k][1]=="/" or vect[k][1]=="\\"){vect[k][1] = to_string(atoi(vect[k][0].c_str())+25);}
+        
+        offset[k] = atoi(vect[k][1].c_str());
         emotion[k] = vect[k][2];
-        AU[k] = atoi(vect[k][3].c_str());
+
+        //emotion[k] = "emotionBasique";
+        //AUstring = /*vect[k][3]*/"salut";
+       // cout << vect[k][3] << " , " << vect[k][3].c_str() << " " <<  vect[k][3].length()<< endl;
+        //cout << "length " << AUstring.length() << endl;
+
+        if (vect[k][3].length()>2){
+            AU[k] = 0;
+        }
+        else {
+            AU[k] = atoi(vect[k][3].c_str());
+
+        }
+        /*
+        cout << "ME" << k << ", onset = " << vect[k][0] << endl;
+        cout << "ME" << k << ", offset = " << vect[k][1] << endl;
+        cout << "ME" << k<< ", emotion = " << vect[k][2] << endl;
+        cout << "ME" << k<< ", AU = " << vect[k][3] << endl;
+         */
+
     }
-    
+
     
     //cout << onset << " " << offset << " " << emotion << " " << AU << endl;
     
@@ -153,27 +180,34 @@ int main(int argc, const char * argv[]) {
     
     Point topleft;
     Point bottomright;
+    //topleft.x,topleft.y,bottomright.x,bottomright.y = 0;
     vector<cv :: Point> points;
 
     cout << "Video capturing has been started ..." << endl;
     int refreshFaceDetectFrequency = 25;
-    
+
     for(int i = 0; i < len ;i++)
     {
+
         capture >> frame;
         if( frame.empty() )
             break;
     
         //Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
         
-        if (i%refreshFaceDetectFrequency == 0){points = detectAndDraw(frame, cascade);}
+        if (i%refreshFaceDetectFrequency == 0){ // =5 : if =0 and first frames are black there will be an error with detectAndDraw
+            points = detectAndDraw(frame, cascade);
+            topleft = points[0];
+            bottomright = points[1];
+        }
         
-        topleft = points[0];
-        bottomright = points[1];
-        
+
         for (int k = 0; k< countME; k++){
-            if (i>onset[k] && i< offset[k])
+           
+            if ((i>atoi(vect[k][0].c_str())) & (i< atoi(vect[k][1].c_str())))
+            {
                 drawScreen(frame, AU[k], topleft, bottomright, emotion[k], nColor);
+            }
         }
     
         if (display == true){imshow( "result", frame );}
