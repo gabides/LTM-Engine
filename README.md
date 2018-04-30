@@ -23,5 +23,5 @@ This app was developped using OpenCV version 3.4.1
 ME = micro-expression
 
 
-Year-long project with Louis Lenief at CentraleSupélec (2018) and the Facial Analysis Synthesis and Tracking (FAST) research team.
+Year-long project with Louis Lenief at CentraleSupélec (2018) and the Facial Analysis Synthesis and Tracking ([FAST](http://www.rennes.supelec.fr/ren/rd/fast/fast_accueil.php)) research team.
 
