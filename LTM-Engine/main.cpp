@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
-                                 "{inputname|CASMEB/EP02_2.avi|}"
+                                 "{inputname|CASMEA/EP05_2.avi|}"
                                  "{outputname||}"
                                  "{livedisplay|true|}"
                                  "{color|5|}");
@@ -203,7 +203,8 @@ int main(int argc, const char * argv[]) {
         
 
         for (int k = 0; k< countME; k++){
-           
+            //cout <<"(i,k) = (" << i << "," << k << ") onset = " << vect[k][0] << ", offset = " << vect[k][1] << endl;
+            
             if ((i>atoi(vect[k][0].c_str())) & (i< atoi(vect[k][1].c_str())))
             {
                 drawScreen(frame, AU[k], topleft, bottomright, emotion[k], nColor);
