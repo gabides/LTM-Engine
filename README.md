@@ -5,7 +5,8 @@ C++ application for micro-expressions detection and recognition with graphical i
  With the engine you can annotate a video with the related ME (from the video .txt file). It will result in a new video in output with details about the micro-expression (location of the ME, and feeling related)
 
 
-The interface is being implemented for OSX with Swift language in another project, and the detection/recognition runs in an independent app.
+The interface is being implemented for OSX with Swift language in another project ([LTM-interface](https://github.com/louislnf/LTM-interface/)), and the detection/recognition runs in an independent app.
+
 
 
 Usage:  
