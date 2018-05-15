@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <iostream>
-//#include <fstream>
+#include <fstream>
 
 using namespace std;
 class MicroExpression

@@ -24,20 +24,13 @@ static void help()
 
 string cascadeName;
 
-
 vector<Point> detectAndDraw( Mat& img, CascadeClassifier& cascade);
-
 
 void drawScreen( Mat& img, int AU, Point tl, Point br, string emotion, int nColor);
 
-
-vector<vector<string>> txtToVector(string txtpath);
-
+vector<MicroExpression> txtToMEVector(string txtpath);
 
 void drawScreen2( Mat& img){imshow( "result", img );}
-
-
-    
 
 
 int main(int argc, const char * argv[]) {
@@ -60,7 +53,7 @@ int main(int argc, const char * argv[]) {
 
     cv::CommandLineParser parser(argc, argv,
                                  "{help h||}"
-                                 "{inputname|CASMEA/EP05_2.avi|}"
+                                 "{inputname|CASMEA/EP09_4.avi|}"
                                  "{outputname||}"
                                  "{livedisplay|true|}"
                                  "{color|5|}");
@@ -125,62 +118,20 @@ int main(int argc, const char * argv[]) {
     txtpath.append(".txt");
 
     cout << "txtpath = " << txtpath << endl;
+
+    
     int countME;
-    int onset[countME];  //those tables are useless, don't work for onset offset // else ? AU and emotiion ?
-    int offset[countME];
-    string emotion[countME];
-    int AU[countME+1];
-
     
-    string AUstring;
     
-    std::vector<std::vector<string>> vect(countME, std::vector<string>(4));
+    std::vector<MicroExpression> ME;
+    ME = txtToMEVector(txtpath);
+    countME = (int)ME.size();
     
-
-    vect = txtToVector(txtpath);
-    countME = (int)vect.size();
-    cout << "countME = " << countME << endl;
-    for(int k = 0; k < countME; k++){
-        onset[k] = atoi(vect[k][0].c_str());
-        
-        /*if(vect[k][1]=="/" or vect[k][1]=="\\"){offset[k] = onset[k]+25.;}
-        else {offset[k] = atoi(vect[k][1].c_str());}*/
-        
-        
-        if(vect[k][1]=="/" or vect[k][1]=="\\"){vect[k][1] = to_string(atoi(vect[k][0].c_str())+25);}
-        
-        offset[k] = atoi(vect[k][1].c_str());
-        emotion[k] = vect[k][2];
-
-        //emotion[k] = "emotionBasique";
-        //AUstring = /*vect[k][3]*/"salut";
-       // cout << vect[k][3] << " , " << vect[k][3].c_str() << " " <<  vect[k][3].length()<< endl;
-        //cout << "length " << AUstring.length() << endl;
-
-        if (vect[k][3].length()>2){
-            AU[k] = 0;
-        }
-        else {
-            AU[k] = atoi(vect[k][3].c_str());
-
-        }
-        /*
-        cout << "ME" << k << ", onset = " << vect[k][0] << endl;
-        cout << "ME" << k << ", offset = " << vect[k][1] << endl;
-        cout << "ME" << k<< ", emotion = " << vect[k][2] << endl;
-        cout << "ME" << k<< ", AU = " << vect[k][3] << endl;
-         */
-
-    }
-
-    
-    //cout << onset << " " << offset << " " << emotion << " " << AU << endl;
-    
-    cout << "number of microexpressions in the video : " << vect.size() << endl;
+    cout << "number of microexpressions in the video : " << countME << endl;
     
     Point topleft;
     Point bottomright;
-    //topleft.x,topleft.y,bottomright.x,bottomright.y = 0;
+
     vector<cv :: Point> points;
 
     cout << "Video capturing has been started ..." << endl;
@@ -193,7 +144,6 @@ int main(int argc, const char * argv[]) {
         if( frame.empty() )
             break;
     
-        //Mat frame1 = frame.clone(); // pourquoi ? surement pour du traitement
         
         if (i%refreshFaceDetectFrequency == 0){ // =5 : if =0 and first frames are black there will be an error with detectAndDraw
             points = detectAndDraw(frame, cascade);
@@ -203,11 +153,11 @@ int main(int argc, const char * argv[]) {
         
 
         for (int k = 0; k< countME; k++){
-            //cout <<"(i,k) = (" << i << "," << k << ") onset = " << vect[k][0] << ", offset = " << vect[k][1] << endl;
-            
-            if ((i>atoi(vect[k][0].c_str())) & (i< atoi(vect[k][1].c_str())))
+            //cout <<"(i,k) = (" << i << "," << k << ") onset = " << ME[k].onset << ", offset = " << ME[k].offset << endl;
+            if ((i>ME[k].onset-5) & (i<ME[k].offset+5)) // +/-5 frames to see more clearly when the faces changes
             {
-                drawScreen(frame, AU[k], topleft, bottomright, emotion[k], nColor);
+                //cout <<"(i,k) = (" << i << "," << k << ") microExpression being drawn " << endl;
+                drawScreen(frame, ME[k].AU, topleft, bottomright, ME[k].emotion, nColor);
             }
         }
     

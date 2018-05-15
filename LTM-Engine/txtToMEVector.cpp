@@ -9,12 +9,13 @@
 #include "Header.h"
 
 
-vector<vector<string>> txtToVector(string txtpath)
+vector<MicroExpression> txtToMEVector(string txtpath)
 {
     ifstream file(txtpath);
     string current_line;
     // vector allows you to add data without knowing the exact size beforehand
-    vector< vector<string> > all_data;
+    
+    vector<MicroExpression> MEs;
     // Start reading lines as long as there are lines in the file
     
     while(getline(file, current_line)){
@@ -23,24 +24,25 @@ vector<vector<string>> txtToVector(string txtpath)
         vector<string> values;
         stringstream temp(current_line);
         string single_value;
+        MicroExpression me;
         while(getline(temp,single_value,';')){
-            
-            // convert the string element to a integer value
-            //values.push_back(atoi(single_value.c_str()));
-            //cout << "read : " << single_value << endl;
             values.push_back(single_value);
         }
+        
+        //put the microExpression info from the string vector to the me object
+        me.onset = atoi(values[0].c_str());
+ 
+        if(values[1]=="/" or values[1]=="\\"){values[1] = to_string(atoi(values[0].c_str())+25);}
+        
+        me.offset = atoi(values[1].c_str());
+        me.emotion = values[2];
+        if (values[3].length()>2){me.AU = 0;}
+        else {me.AU = atoi(values[3].c_str());}
+        
+
         // add the row to the complete data vector
-        all_data.push_back(values);
+        MEs.push_back(me);
         
     }
-    //int n = all_data.size();
-    
-    /*for (int i=0; i<n; i++){
-     for (int j = 0; j < 4 ; j++){
-     cout << all_data[i][j] << " ";
-     }
-     cout << endl;
-     }*/
-    return all_data;
+    return MEs;
 }

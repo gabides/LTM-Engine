@@ -14,6 +14,8 @@
 #include "opencv2/imgproc.hpp"
 #include <iostream>
 #include <fstream>
+#include "microExpression.cpp"
+
 
 using namespace std;
 using namespace cv;
