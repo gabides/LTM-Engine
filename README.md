@@ -1,6 +1,8 @@
 # LTM-Engine
 C++ application for micro-expressions detection and recognition with graphical interface (video player). This engine is the video editing part of the app (displays the ME at the right place and time in the video, with annotations). OpenCV is necessary to run the app.
 
+The LTM app is a visualisation tool for researchers to compare algorithms results and ground truth.
+
  This engine is part of the LTM microexpressions analysis project.  
  With the engine you can annotate a video with the related ME (from the video .txt file). It will result in a new video in output with details about the micro-expression (location of the ME, and feeling related)
 
